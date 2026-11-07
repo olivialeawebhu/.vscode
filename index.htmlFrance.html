@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wissen über die Französische Revolution</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <p class="eyebrow">GESCHICHTE · 1789–1799</p>
+    <h1>Wissen über die Französische Revolution</h1>
+    <p class="subtitle">Entdecke die Ereignisse, Menschen und Ideen einer Zeit, die Frankreich und Europa veränderte.</p>
+  </header>
+
+  <nav class="navigation">
+    <button class="nav-button active" data-page="verlauf">Verlauf</button>
+    <button class="nav-button" data-page="ursachen">Ursachen und Folgen</button>
+    <button class="nav-button" data-page="personen">Personen in der Französischen Revolution</button>
+    <button class="nav-button" data-page="frauen">Frauen in der Französischen Revolution</button>
+    <button class="nav-button" data-page="guillotine">Guillotine</button>
+  </nav>
+
+  <main>
+    <section class="page active" id="verlauf">
+      <div class="section-heading">
+        <p class="eyebrow">LERNSPIEL 01</p>
+        <h2>Der Verlauf der Revolution</h2>
+        <p>Finde die passenden Paare, indem du die richtigen Karten einander zuordnest.</p>
+      </div>
+      <div class="game-info">
+        <span>Versuche: <strong id="moves">0</strong></span>
+        <span>Paare: <strong id="pairs">0</strong> / 6</span>
+        <button id="memory-reset" class="small-button">Neu starten</button>
+      </div>
+      <p id="memory-message" class="status-message">Wähle zwei Karten aus.</p>
+      <div id="memory-grid" class="memory-grid"></div>
+    </section>
+
+    <section class="page" id="ursachen">
+      <div class="section-heading">
+        <p class="eyebrow">LERNSPIEL 02</p>
+        <h2>Ursachen und Folgen</h2>
+        <p>Warum kam es 1789 zur Revolution?</p>
+      </div>
+
+      <article class="info-card">
+        <h3>Die Ursachen</h3>
+        <ul>
+          <li><strong>Soziale Ungleichheit:</strong> Adel und Klerus hatten Privilegien, während der dritte Stand den größten Teil der Bevölkerung ausmachte.</li>
+          <li><strong>Finanzkrise:</strong> Der Staat war hoch verschuldet. Hohe Abgaben und steigende Brotpreise belasteten viele Menschen.</li>
+          <li><strong>Aufklärung:</strong> Ideen über Freiheit, Gleichheit und Volkssouveränität stellten die absolute Monarchie infrage.</li>
+          <li><strong>Politische Krise:</strong> König Ludwig XVI. konnte die Konflikte um Steuern und politische Mitsprache nicht lösen.</li>
+        </ul>
+      </article>
+
+      <article class="info-card">
+        <h3>Die Folgen</h3>
+        <ul>
+          <li>Die absolute Monarchie wurde abgeschafft.</li>
+          <li>Die Erklärung der Menschen- und Bürgerrechte von 1789 formulierte wichtige Freiheits- und Gleichheitsrechte.</li>
+          <li>1792 wurde Frankreich zur Republik.</li>
+          <li>Die Revolution brachte Gewalt und politische Verfolgung mit sich.</li>
+          <li>1799 übernahm Napoleon Bonaparte die Macht.</li>
+        </ul>
+      </article>
+
+      <article class="info-card">
+        <h3>🔎 Suchsel – Französische Revolution</h3>
+        <p>Finde die zehn versteckten Wörter. Sie können waagerecht, senkrecht oder diagonal sowie vorwärts oder rückwärts stehen.</p>
+
+        <div class="search-progress">
+          Gefunden: <strong id="crossword-progress">0</strong> / 10
+        </div>
+
+        <div class="crossword-layout">
+          <div>
+            <div id="crossword-grid" class="crossword-grid"></div>
+            <p id="crossword-message" class="status-message">
+              Klicke zuerst auf den Anfang und dann auf den Endbuchstaben eines Wortes.
+            </p>
+            <button id="crossword-reset" class="small-button" type="button">
+              Neues Suchsel
+            </button>
+          </div>
+
+          <div class="crossword-clues">
+            <h3>Gesuchte Wörter</h3>
+            <div id="crossword-word-list"></div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="page" id="personen">
+      <div class="section-heading">
+        <p class="eyebrow">LERNSPIEL 03</p>
+        <h2>Personen in der Französischen Revolution</h2>
+        <p>Finde zu jeder Person die passende Beschreibung.</p>
+      </div>
+      <div class="game-info">
+        <span>Paare: <strong id="people-pairs">0</strong> / 5</span>
+        <button id="people-reset" class="small-button">Neu mischen</button>
+      </div>
+      <p id="people-message" class="status-message">Wähle zwei passende Kärtchen.</p>
+      <div id="people-grid" class="matching-grid"></div>
+    </section>
+
+    <section class="page" id="frauen">
+      <div class="section-heading">
+        <p class="eyebrow">LERNSPIEL 04</p>
+        <h2>Frauen in der Französischen Revolution</h2>
+        <p>Ziehe die Wörter in die passenden Lücken.</p>
+      </div>
+      <div id="women-exercises" class="women-exercises"></div>
+      <div class="game-info">
+        <span>Richtige Lücken: <strong id="women-score">0</strong> / <strong id="women-total">0</strong></span>
+        <button id="women-check" class="small-button">Alle prüfen</button>
+        <button id="women-reset" class="small-button">Zurücksetzen</button>
+      </div>
+      <p id="women-message" class="status-message">Wähle ein Wort aus der Wortleiste und anschließend eine Lücke.</p>
+    </section>
+
+    <section class="page" id="guillotine">
+      <div class="section-heading">
+        <p class="eyebrow">LERNSPIEL 05</p>
+        <h2>Die Guillotine – Quiz</h2>
+        <p>Wähle eine Antwort.</p>
+      </div>
+      <div class="quiz-topline">
+        <span>Frage <strong id="quiz-progress">1</strong> / 10</span>
+        <span>Punkte: <strong id="quiz-score">0</strong></span>
+      </div>
+      <article class="info-card quiz-card">
+        <h3 id="quiz-question"></h3>
+        <div id="quiz-options" class="quiz-options"></div>
+        <p id="quiz-feedback" class="status-message" aria-live="polite"></p>
+        <div class="quiz-actions">
+          <button id="quiz-submit" class="primary-button">Antwort prüfen</button>
+          <button id="quiz-next" class="small-button" hidden>Nächste Frage</button>
+          <button id="quiz-restart" class="small-button" hidden>Quiz wiederholen</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>Wissen über die Französische Revolution</p>
+    <p>Ein interaktives Geschichtsprojekt</p>
+  </footer>
+</body>
+</html>

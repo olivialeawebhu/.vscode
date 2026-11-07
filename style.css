@@ -1,0 +1,581 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap');
+
+:root {
+  --navy: #101c35;
+  --red: #7e202d;
+  --red-hover: #9c2d3c;
+  --paper: #f7f4ee;
+  --ink: #1c2638;
+  --green: #bce8c8;
+  --line: #d7dce4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at top, #203454, var(--navy) 60%, #0b1428);
+  color: var(--ink);
+  font-family: "Source Sans 3", Arial, sans-serif;
+}
+
+.site-header {
+  max-width: 1100px;
+  margin: auto;
+  padding: 50px 20px 35px;
+  text-align: center;
+  color: white;
+}
+
+.eyebrow {
+  color: #d8b8a0;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.site-header h1,
+.section-heading h2 {
+  font-family: "Libre Baskerville", Georgia, serif;
+}
+
+.site-header h1 {
+  margin: 16px 0;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  line-height: 1.2;
+}
+
+.subtitle {
+  max-width: 700px;
+  margin: auto;
+  color: #d5deeb;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px;
+  background: #0a1428aa;
+  border-block: 1px solid #ffffff20;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.nav-button,
+.small-button,
+.primary-button {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 700;
+  transition: .2s;
+}
+
+.nav-button {
+  padding: 12px 16px;
+  color: white;
+  background: var(--red);
+}
+
+.nav-button:hover,
+.nav-button.active {
+  background: var(--red-hover);
+  border-color: #d28a91;
+}
+
+main {
+  width: min(1180px, calc(100% - 32px));
+  margin: 30px auto 55px;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+  animation: appear .25s ease-out;
+}
+
+@keyframes appear {
+  from { opacity: .4; transform: translateY(5px); }
+  to { opacity: 1; transform: none; }
+}
+
+.section-heading {
+  margin-bottom: 24px;
+  color: white;
+}
+
+.section-heading h2 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1.3;
+}
+
+.section-heading > p:last-child {
+  color: #d3ddec;
+  font-size: 1.08rem;
+  line-height: 1.6;
+}
+
+.info-card {
+  margin: 18px 0;
+  padding: clamp(18px, 3vw, 30px);
+  border: 1px solid #ffffff70;
+  border-radius: 14px;
+  background: var(--paper);
+  box-shadow: 0 12px 32px #0003;
+}
+
+.info-card h3,
+.women-card h3 {
+  margin-top: 0;
+  color: #202d43;
+  font-family: "Libre Baskerville", Georgia, serif;
+}
+
+.info-card li,
+.info-card p {
+  line-height: 1.65;
+}
+
+.game-info,
+.quiz-topline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 16px 0;
+  color: white;
+}
+
+.game-info strong,
+.quiz-topline strong {
+  color: #f3d7b5;
+}
+
+.small-button {
+  padding: 9px 13px;
+  color: white;
+  background: #344661;
+  border-color: #61718a;
+}
+
+.small-button:hover {
+  background: #435a7b;
+}
+
+.primary-button {
+  padding: 11px 18px;
+  color: white;
+  background: var(--red);
+}
+
+.primary-button:hover {
+  background: var(--red-hover);
+}
+
+.status-message {
+  min-height: 1.5em;
+  color: #f3dfc9;
+  font-weight: 700;
+}
+
+/* Memory-Spiel */
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.memory-card {
+  display: grid;
+  place-items: center;
+  min-height: 125px;
+  padding: 12px;
+  overflow-wrap: anywhere;
+  border: 2px solid #bca58c;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #7e202d, #4b1826);
+  color: white;
+  text-align: center;
+  font: 700 clamp(.78rem, 1.5vw, 1rem)/1.4 "Libre Baskerville", Georgia, serif;
+}
+
+.memory-card::before {
+  content: "✦";
+  color: #e5caa8;
+  font-size: 1.5rem;
+}
+
+.memory-card.revealed,
+.memory-card.matched {
+  background: #f8f3e9;
+  color: #24334a;
+}
+
+.memory-card.revealed::before,
+.memory-card.matched::before {
+  display: none;
+}
+
+.memory-card.matched {
+  background: var(--green);
+  border-color: #348451;
+}
+
+.memory-card:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+/* Suchsel */
+.crossword-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(240px, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.crossword-grid {
+  display: grid;
+  grid-template-columns: repeat(18, minmax(0, 1fr));
+  gap: 3px;
+  padding: 7px;
+  border: 1px solid #17253a;
+  border-radius: 8px;
+  background: #17253a;
+}
+
+.crossword-cell {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: #f8f3e9;
+  color: #24334a;
+  font-size: clamp(8px, 1.5vw, 16px);
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+}
+
+.crossword-cell:hover {
+  background: #f1dfc4;
+}
+
+.crossword-cell.selected {
+  background: #facc15;
+  color: #33230b;
+  outline: 2px solid #a76e18;
+}
+
+.crossword-cell.found {
+  background: #86d99d;
+  color: #174d2b;
+  outline: 1px solid #348451;
+}
+
+.search-progress {
+  margin: 16px 0;
+  padding: 12px;
+  border-radius: 8px;
+  background: #e9edf3;
+  color: #24334a;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.search-progress strong {
+  color: #287a43;
+}
+
+.crossword-clues h3 {
+  margin-top: 0;
+}
+
+#crossword-word-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.crossword-word {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 8px 5px;
+  border: 1px solid #cbd2dd;
+  border-radius: 8px;
+  background: white;
+  color: #24334a;
+  text-align: center;
+  font-size: .85rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.crossword-word.solved {
+  border-color: #348451;
+  background: #bce8c8;
+  color: #174d2b;
+  text-decoration: line-through;
+}
+
+/* Zuordnungsspiel */
+.matching-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.match-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 125px;
+  padding: 14px;
+  border: 2px solid #aeb9ca;
+  border-radius: 11px;
+  background: var(--paper);
+  color: #202d43;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.match-card.selected {
+  border-color: #d4ad75;
+  box-shadow: 0 0 0 3px #d4ad7540;
+}
+
+.match-card.matched {
+  border-color: #2c8a4d;
+  background: var(--green);
+}
+
+.match-card.wrong {
+  border-color: #c73542;
+  box-shadow: 0 0 0 2px #c735422e;
+}
+
+.match-card:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+/* Lückentexte */
+.women-exercises {
+  display: grid;
+  gap: 18px;
+}
+
+.women-card {
+  padding: 22px;
+  border-radius: 14px;
+  background: var(--paper);
+  box-shadow: 0 12px 32px #0003;
+}
+
+.women-text {
+  font-size: 1.04rem;
+  line-height: 2.3;
+}
+
+.drop-slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 90px;
+  min-height: 32px;
+  margin: 2px 3px;
+  padding: 2px 8px;
+  border: 1px dashed #49845c;
+  border-radius: 6px;
+  background: #e1f5e5;
+  color: #174d2b;
+  font: 700 .95rem "Source Sans 3", sans-serif;
+}
+
+.drop-slot.empty {
+  background: #f2fbf3;
+  color: #55745e;
+}
+
+.drop-slot.correct {
+  border-style: solid;
+  background: #aee4bb;
+}
+
+.drop-slot.wrong {
+  border-color: #c73542;
+  background: #fff0f0;
+}
+
+.word-bank {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #d9ded9;
+}
+
+.word-chip {
+  padding: 7px 10px;
+  border: 1px solid #aeb8c7;
+  border-radius: 7px;
+  background: #e8eaf0;
+  color: #27364c;
+  font-weight: 600;
+}
+
+.word-chip.selected {
+  border-color: #a76e3c;
+  background: #f1d8b9;
+}
+
+.word-chip.used {
+  opacity: .4;
+}
+
+/* Quiz */
+.quiz-topline {
+  justify-content: space-between;
+  font-size: 1.05rem;
+}
+
+.quiz-card {
+  max-width: 850px;
+  margin: auto;
+}
+
+.quiz-options {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.quiz-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid #cbd2dd;
+  border-radius: 9px;
+  background: white;
+  cursor: pointer;
+  line-height: 1.45;
+}
+
+.quiz-option input {
+  margin-top: 5px;
+  accent-color: var(--red);
+}
+
+.quiz-option.correct {
+  border-color: #2c8a4d;
+  background: #e2f6e6;
+}
+
+.quiz-option.incorrect {
+  border-color: #c73542;
+  background: #fff0f0;
+}
+
+.quiz-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+footer {
+  padding: 28px 18px 36px;
+  border-top: 1px solid #ffffff20;
+  color: #b9c5d6;
+  text-align: center;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Tablet */
+@media (max-width: 850px) {
+  .crossword-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .matching-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .match-card {
+    min-height: 100px;
+  }
+}
+
+/* Smartphone */
+@media (max-width: 560px) {
+  .site-header {
+    padding-top: 35px;
+  }
+
+  main {
+    width: calc(100% - 20px);
+    margin-top: 22px;
+  }
+
+  .nav-button {
+    flex: 1 1 42%;
+    padding: 10px;
+    font-size: .9rem;
+  }
+
+  .memory-grid {
+    gap: 7px;
+  }
+
+  .memory-card {
+    min-height: 90px;
+    padding: 6px;
+    font-size: .72rem;
+  }
+
+  .crossword-grid {
+    gap: 2px;
+    padding: 3px;
+  }
+
+  .crossword-cell {
+    font-size: clamp(7px, 2.5vw, 12px);
+  }
+
+  #crossword-word-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .women-card {
+    padding: 16px;
+  }
+
+  .drop-slot {
+    min-width: 75px;
+  }
+}
